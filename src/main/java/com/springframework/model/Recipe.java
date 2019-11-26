@@ -1,14 +1,12 @@
 package com.springframework.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(exclude = {"notes","ingredients","categories"})
 @Entity
 public class Recipe {
     @Id
