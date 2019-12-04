@@ -42,10 +42,7 @@ public class RecipeServiceImp implements RecipeService{
     @Transactional
     public RecipeCommand saveRecipeCommand(RecipeCommand recipeCommand) {
         Recipe detachedRecipe=recipeCommandToRecipe.convert(recipeCommand);
-        System.out.println("before save");
-        System.out.println(detachedRecipe.getNotes().getRecipeNotes());
         Recipe savedRecipe=recipeRepository.save(detachedRecipe);
-        System.out.println("after save");
         return recipeToRecipeCommand.convert(savedRecipe);
     }
 }
