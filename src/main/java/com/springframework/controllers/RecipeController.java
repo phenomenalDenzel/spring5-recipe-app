@@ -48,9 +48,19 @@ public class RecipeController {
     }
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
-    public ModelAndView handleNotFoundException(){
+    public ModelAndView handleNotFoundException(Exception exception){
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.setViewName("404error");
+        modelAndView.addObject("exception",exception);
+        return modelAndView;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(NumberFormatException.class)
+    public ModelAndView handleBadRequestException(Exception exception){
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("400error");
+        modelAndView.addObject("exception",exception);
         return modelAndView;
     }
 }

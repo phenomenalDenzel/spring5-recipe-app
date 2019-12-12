@@ -95,4 +95,13 @@ class RecipeControllerTest {
                 .andExpect(view().name("redirect:/"));
         verify(recipeService).deleteById(anyLong());
     }
+
+    @Test
+    void handleNumberFormatException() throws Exception{
+        //when(recipeService.findRecipeById(anyLong())).thenThrow(NumberFormatException.class);
+        mockMvc.perform(get("/recipe/dd/show"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("400error"))
+                .andExpect(model().attributeExists("exception"));
+    }
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Not Found Error</title>
+    <title>Bad Request Error</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -22,15 +22,16 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h1 class="panel-title"> 404 Error Not Found</h1>
+                    <h1 class="panel-title"> 400 Error Bad Request</h1>
                 </div>
                 <div class="panel-body">
-                    <h2>Such Resource not found</h2>
+                    <h2>You made a bad request</h2>
                     <p th:text="${exception.message}"></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>
