@@ -109,6 +109,7 @@ class IngredientServiceImpTest {
 
         UnitOfMeasureCommand unitOfMeasureCommand=new UnitOfMeasureCommand();
         unitOfMeasureCommand.setId(3l);
+
         command.setUnitOfMeasure(unitOfMeasureCommand);
         command.setRecipeId(2l);
 

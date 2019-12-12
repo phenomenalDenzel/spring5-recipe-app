@@ -48,8 +48,8 @@ public class IngredientController {
             throw new RuntimeException("Wrong recipe id");
         IngredientCommand ingredientCommand=new IngredientCommand();
         ingredientCommand.setRecipeId(recipeCommand.getId());
-        model.addAttribute("ingredient",ingredientCommand);
         ingredientCommand.setUnitOfMeasure(new UnitOfMeasureCommand());
+        model.addAttribute("ingredient",ingredientCommand);
         model.addAttribute("uomList",unitOfMeasureService.listAllUoms());
         return "recipe/ingredient/ingredientform";
     }
