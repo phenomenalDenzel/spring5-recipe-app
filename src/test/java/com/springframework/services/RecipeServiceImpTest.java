@@ -2,8 +2,10 @@ package com.springframework.services;
 
 import com.springframework.converters.RecipeCommandToRecipe;
 import com.springframework.converters.RecipeToRecipeCommand;
+import com.springframework.exceptions.NotFoundException;
 import com.springframework.model.Recipe;
 import com.springframework.repositories.RecipeRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -41,7 +43,13 @@ class RecipeServiceImpTest {
         verify(recipeRepository,times(1)).findById(anyLong());
         verify(recipeRepository,never()).findAll();
     }
+    @Test
+    public void testRecipeNotFound(){
+        Optional<Recipe> recipeOptional=Optional.empty();
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+        Assertions.assertThrows(NotFoundException.class,()->recipeServiceImp.findRecipeById(1L));
 
+    }
     @Test
     void getRecipes() {
         Set<Recipe> recipeData=new HashSet<>();
